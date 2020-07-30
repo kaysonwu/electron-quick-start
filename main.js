@@ -14,11 +14,11 @@ function createWindow() {
     },
   });
 
-  mainWindow.webContents.openDevTools();
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('ready-to-show', () => mainWindow.show()).on('close', () => { mainWindow = null; });
 
   mainWindow.on('maximize', () => {
+    // The first time you double-click a custom title bar, two events are triggered
     console.log('maximize')
   });
 }
