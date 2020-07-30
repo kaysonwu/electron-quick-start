@@ -6,13 +6,20 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" href="./index.css" />
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <div class="window-titlebar">
+      <span class="window-title">Hello World!</span>
+      <span class="window-control">
+        <span role="button" class="anticon close">
+          <svg viewBox="0 0 14 14"  width="1em" height="1em" focusable="false" aria-hidden="true" stroke="currentColor">
+            <line x1="0" x2="14" y1="0" y2="14" />
+            <line x1="0" x2="14" y1="14" y2="0" />
+          </svg>
+        </span>
+      </span>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>

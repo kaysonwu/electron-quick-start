@@ -1,0 +1,92 @@
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  background-color: #fff;
+  font-feature-settings: 'tnum';
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+}
+
+.anticon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  color: white;
+  background: #1890FF;
+  cursor: default;
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.window-title {
+  flex: 1 1 0;
+  padding-left: 12px;
+}
+
+.window-control {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  -webkit-app-region: no-drag;
+}  
+
+.window-control > * {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 8px;
+}
+
+.window-control > .anticon {
+    font-size: 12px;
+    transition: all 0.3s;
+}
+.window-control > .anticon:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.window-control > .anticon:active {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+.window-control > .close:hover {
+  background: #f5222d;
+}
+
+.window-control > .close:active {
+  background: #a8071a;
+}
