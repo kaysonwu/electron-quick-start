@@ -15,12 +15,8 @@ function createWindow() {
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.webContents.openDevTools();
   mainWindow.on('ready-to-show', () => mainWindow.show()).on('close', () => { mainWindow = null; });
-
-  mainWindow.on('maximize', () => {
-    // The first time you double-click a custom title bar, two events are triggered
-    console.log('maximize')
-  });
 }
 
 // create main BrowserWindow when electron is ready

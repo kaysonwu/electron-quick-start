@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="./index.css" />
   </head>
@@ -12,7 +12,17 @@
     <div class="window-titlebar">
       <span class="window-title">Hello World!</span>
       <span class="window-control">
-        <span role="button" class="anticon close">
+        <span id="unmaximize" role="button" class="action" style="display: none;">
+          <svg viewBox="0 0 12 12" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" shape-rendering="crispEdges" d="M2,3 L2,1 12,1 12,10 10,10 10,9 11,9 11,2 2.5,2 2.5,3z M0,3 L10,3 10,12 0,12z M1,4 L9,4 9,11 1,11z" />
+          </svg>
+        </span>
+        <span id="maximize" role="button" class="anticon">
+          <svg viewBox="0 0 12 12" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M0,1 L12,1 12,12 0,12z M1,2 L11,2 11,11 1,11z" shape-rendering="crispEdges" fill-rule="evenodd" />
+          </svg>
+        </span>
+        <span id="close" role="button" class="anticon close">
           <svg viewBox="0 0 14 14"  width="1em" height="1em" focusable="false" aria-hidden="true" stroke="currentColor">
             <line x1="0" x2="14" y1="0" y2="14" />
             <line x1="0" x2="14" y1="14" y2="0" />
@@ -20,7 +30,41 @@
         </span>
       </span>
     </div>
+    <div>
+      <button id="resizable">Toggle Resizable</button>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>
+  <script>
+    const currentWindow = require('electron').remote.getCurrentWindow();
+    const maximize = document.getElementById('maximize');
+    const unmaximize = document.getElementById('unmaximize');
+    const close = document.getElementById('close');
+    const resizable = document.getElementById('resizable');
+
+    currentWindow.on('maximize', () => console.log('onmaximize'));
+
+    maximize.addEventListener('click', () => {
+      currentWindow.maximize();
+      maximize.style.display = "none";
+      unmaximize.style.display = "flex";
+    });
+
+    unmaximize.addEventListener('click', () => {
+      currentWindow.unmaximize();
+      unmaximize.style.display = "none";
+      maximize.style.display = "flex";
+    });
+
+    close.addEventListener('click', () => {
+      currentWindow.close();
+    });
+
+    resizable.addEventListener('click', () => {
+      currentWindow.setResizable(!currentWindow.isResizable());
+      console.log('isResizable', currentWindow.isResizable());
+    });
+
+  </script>
 </html>
